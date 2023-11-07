@@ -2,12 +2,19 @@ const express = require('express');
 const morgan = require('morgan');
 
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const loginRouter = require('./routes/loginRoutes');
-const testimoniesRouter = require('./routes/testimoniesRoutes')
+const testimoniesRouter = require('./routes/testimoniesRoutes');
 
 const app = express();
+
+app.use(
+  cors({
+    origin: '*'
+  })
+);
 
 // 1) MIDDLEWARES
 if (process.env.NODE_ENV === 'development') {
