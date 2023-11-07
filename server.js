@@ -5,8 +5,6 @@ const cors = require('cors');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-app.use(cors());
-
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
@@ -21,6 +19,12 @@ mongoose
   .then(() => console.log('DB connection successful!'));
 
 const port = process.env.PORT || 8080;
+
+app.use(
+  cors({
+    origin: '*'
+  })
+);
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
