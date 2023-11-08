@@ -4,7 +4,7 @@ const APIFeatures = require('./../utils/apiFeatures');
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-rating';
-  req.query.fields = 'name,description,rating';
+  req.query.fields = 'name,description,rating,image';
   next();
 };
 
